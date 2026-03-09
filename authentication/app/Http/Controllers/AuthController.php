@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AuthModel;
+use App\Models\SingUp;
 use Illuminate\Http\Request;
 use Hash;
 use Auth;
@@ -31,7 +31,7 @@ class AuthController extends Controller
     }
 
     public function authLogin(Request $request){
-        $user = AuthModel::where('email', $request->email)->first();
+        $user = SingUp::where('email', $request->email)->first();
         if($user){
             if(Hash::check($request->password, $user->password)){
                 $request->Session()->put('loginId', $user->id);
@@ -60,16 +60,16 @@ class AuthController extends Controller
     {
         $order_id = time() . random_int(25, 99);
 
-        AuthModel::insert([
-            'Order_Id' => $order_id,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->number,
-            'address' => $request->address,
-            'country' => $request->country,
-            'zip_code' => $request->zip_code,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        SingUp::create([
+            'Order_id'      => $order_id,
+            'first_name'    => $request->first_name,
+            'last_name'     => $request->last_name,
+            'phone'         => $request->number,
+            'address'       => $request->address,
+            'country'       => $request->country,
+            'zip_code'      => $request->zip_code,
+            'email'         => $request->email,
+            'password'      => Hash::make($request->password),
         ]);
         return redirect()->route('login');
     }
