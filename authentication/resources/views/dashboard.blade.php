@@ -9,7 +9,16 @@
 <body>
 <div class="container mt-5">
     @if(Session::has('loginName'))
-        <h2>Welcome, Mr {{Session::get('loginName')}} to the Dashboard</h2>
+        <h2>Welcome, Mr/Mst {{Session::get('loginName')}} to the Dashboard</h2>
+    @endif
+    @if(Session::has('loginEmail'))
+        <h2>Email : {{Session::get('loginEmail')}}</h2>
+    @endif
+    @if(Session::has('loginNumber'))
+        <h2>Number : {{Session::get('loginNumber')}}</h2>
+    @endif
+    @if(Session::has('loginCountry'))
+        <h2>Country : {{Session::get('loginCountry')}}</h2>
     @endif
     <p>This is a simple dashboard page. You can extend it with navigation, user info, or other widgets as needed.</p>
 

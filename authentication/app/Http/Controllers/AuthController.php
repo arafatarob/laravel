@@ -36,6 +36,9 @@ class AuthController extends Controller
             if(Hash::check($request->password, $user->password)){
                 $request->Session()->put('loginId', $user->id);
                 $request->Session()->put('loginName', $user->first_name);
+                $request->Session()->put('loginEmail', $user->email);
+                $request->Session()->put('loginNumber', $user->phone);
+                $request->Session()->put('loginCountry', $user->country);
                 return redirect()->route('dashboard');
             }else{
                 return redirect()->route('login');
