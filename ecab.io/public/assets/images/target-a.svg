@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4" transform="translate(1.000000, 1.000000)">
+            <circle id="Oval-7" fill="#44c0e5" cx="9.5" cy="9.5" r="1.5"></circle>
+            <circle id="Oval-6" stroke="#44c0e5" stroke-width="1.5" cx="9.5" cy="9.5" r="6.5"></circle>
+            <rect id="Rectangle-5" stroke="#44c0e5" x="9" y="0" width="1" height="3"></rect>
+            <rect id="Rectangle-5" stroke="#44c0e5" fill="#44c0e5" x="9" y="16" width="1" height="3"></rect>
+            <rect id="Rectangle-5" stroke="#44c0e5" fill="#44c0e5" transform="translate(1.500000, 9.500000) rotate(90.000000) translate(-1.500000, -9.500000) " x="1" y="8" width="1" height="3"></rect>
+            <rect id="Rectangle-5" stroke="#44c0e5" fill="#44c0e5" transform="translate(17.500000, 9.500000) rotate(90.000000) translate(-17.500000, -9.500000) " x="17" y="8" width="1" height="3"></rect>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,570 @@
+.validation__error__b p{
+  font-size:13px;
+  color:red;
+  margin:0;
+  padding:0;
+  text-align: left;
+}
+.validation__error__b .fa-times-circle{
+    color:red !important;
+}
+.contact__area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+.contact__logo {
+  width: 34%;
+  display: inline-block;
+ 
+}
+.contact__logo img{
+  width: 300px;
+  height: auto;
+  object-fit: unset;
+}
+
+
+.contact__heading {
+  border: 1px solid black;
+  display: inline-block;
+  width: 62%;
+  vertical-align: middle;
+  padding: 3px 5px;
+  background: transparent linear-gradient(180deg, #fbfbfb, #ececec, #cecece) repeat    scroll 0 0;
+}
+
+.contact__heading h3 {
+  font-size: 17px;
+  color: #000;
+  text-align: left;
+  margin: 0;
+  font-weight: 600;
+  padding: 5px 0px;
+}
+
+
+
+.conact__header__information__section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom:10px;
+  align-items: center;
+}
+
+.contact__custom__b div {
+  text-align: left;
+  margin: 2px 10px 2px 0px;
+  }
+  .contact__custom__b span {
+  font-size: 13px !important;
+  color: black !important;
+  position: unset !important;
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 20px;
+  }
+  .contact__custom__b h5 {
+  color: #000;
+  font-size: 13px;
+  margin: 0;
+  }
+  .contact__custom__b p {
+  color: #000;
+  font-size: 13px;
+  margin: 0;
+  }
+  .contact__user__info__box{
+  border: 1px solid black;
+  padding: 5px;
+  }
+  .company__info__box ul,
+  .contact__user__info__box ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  }
+  .company__info__box ul li,
+  .contact__user__info__box ul li{
+  font-size: 13px !important;
+  color: #000;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 18px;
+  }
+  .contact__footer__info__box{
+  border-top:1px solid black;
+  margin-top:10px
+  }
+  .contact__footer__info__box p {
+  font-size:13px;
+  text-align:center;
+  margin:0;
+  padding:0
+  }
+
+
+
+.form-block {
+  margin-bottom: 20px;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, #fbfbfb 0%, #ececec 39%, #ececec 39%, #cecece 100%);
+  border: 1px solid #0091d1;
+}
+.form-block form {
+  padding: 5px 15px;
+}
+
+form.custom__contact__form label{
+    display:block !important;
+    font-weight: normal;
+}
+form.custom__contact__form .trashbg{
+    border: none;
+    background: transparent;
+}
+
+.sendmessage {
+    display: flex !important;
+    justify-content: center !important;
+}
+.fileInputDivElement {
+  margin-bottom: 2px;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  color: #333;
+  font-weight: 600;
+  background: linear-gradient(to bottom, #F7F7F7 0%, #F8F8F8 39%, #D5D5D5 100%) !important;
+}
+
+.custom-file-upload:hover {
+  background: linear-gradient(to top, #F7F7F7 0%, #F8F8F8 39%, #D5D5D5 100%) !important;
+}
+.contact-file-name{
+
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  position: unset !important;
+  font-size: 13px !important;
+  color: #000 !important;
+
+}
+    .current__location__btn,
+    .current__stop__location__btn {
+        position: absolute;
+        z-index: 10;
+        right: 5px;
+        top: 50%;
+        cursor: pointer;
+        transform: translateY(-50%);
+    }
+    .current__location__btn img,
+    .current__stop__location__btn img {
+        width:21px;
+        height: 21px;
+    }
+
+    /* Ensure button and icon styles don't change on hover */
+    .myfileButton, .myfileButton:hover, .myfileButton i, .myfileButton i:hover {
+    font-weight: bolder;
+    color: white !important;
+    cursor: pointer; /* Prevents the cursor from changing to pointer, indicating no action on hover */
+    text-decoration: none; /* Prevents any underlining or text decoration changes on hover */
+    }
+    /* Additional styling to disable pointer events on the icon itself */
+    .fa-solid {
+    pointer-events: none;
+    }
+
+
+    .noselect {
+        -webkit-user-select: none;
+        /* Safari */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* IE 10+/Edge */
+        user-select: none;
+        /* Standard */
+        cursor: not-allowed;
+        }
+        @media screen and (max-width: 680px) {
+        .send-div {
+        width: 100% !important;
+        }
+        }
+        @media screen and (max-width:480px) {
+        .capcha-math p span {
+        font-size: 20px;
+        margin-right: 7px;
+        }
+        .capcha-math p input {
+        margin-left: 53px;
+        padding: 0px 0px 0px 0px !important;
+        }
+        }
+
+
+
+        .select-wrapper {
+          position: relative;
+        }
+        .select-wrapper::after {
+            content: "\f0d7"; /* Unicode for fa-caret-down */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900; /* Required for solid icons */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            color: #2ba5c9;
+            font-size: 16px;
+            pointer-events: none; /* Ensures it does not block clicks */
+            z-index: 10;
+        }
+
+
+
+  .form__title {
+    background: linear-gradient(to bottom, #44c0e5 0%, #35add1 39%, #0d85a8 100%) !important;
+      color: white;
+      padding: 15px;
+      margin: -20px -20px 20px -20px;
+      border-radius: 8px 8px 0 0;
+  }
+
+
+  .form-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+  }
+
+
+
+  .checkbox {
+      display: flex;
+      align-items: center;
+  }
+
+  .checkbox input {
+      margin-right: 10px;
+  }
+
+
+
+
+
+.validation__error__msg__txt {
+  display: inline;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+.input__border__radius{
+  border-radius: 3px !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.message .success__msg__box {
+  height: auto !important;
+  margin: 3px auto;
+    margin-bottom: 3px;
+  margin-bottom: 0px;
+  width: 542px;
+  border-radius: 10px;
+  padding: 10px 5px;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  color: #000 !important;
+  border: 1px solid rgb(16 156 4);
+  background-color: #cef4ce;
+  animation: buttons 0.3s linear;
+  transition: 200ms ease-in-out;
+  display: none;
+}
+.message .success__msg__box .validation__success__msg__txt {
+  display: inline;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+form.custom__contact__form .remove__btn{
+ cursor: pointer;
+ overflow: hidden;
+ outline: none;
+ padding: 0px;
+ height: fit-content;
+ font-size: 15px;
+ color: #ffffff;
+ height: 22px;
+ width: 20px;
+ border-radius: 50%;
+ text-align: center;
+ margin: 0px;
+ line-height: 20px;
+ border: 1px solid red;
+ background-color: red;
+}
+form.custom__contact__form .remove__btn i{
+ margin:0;
+}
+
+form.custom__contact__form .fa{
+  color: #007FBD !important;
+}
+
+@media screen and (max-width: 400px){
+    textarea#contactText-Area {
+    height: 120px !important;
+}
+.address-section.auto__place__container {
+    width: 377px !important;
+}
+div#conCivilite {
+    width: 37px !important;
+}
+div#confirstName {
+    width: 100px !important;
+    display: inline-block !important;
+    position: relative !important;
+    left: 30px !important;
+}
+input#con-firstName {
+    width: 105px !important;
+    display: inline-block !important;
+}
+input#con-lastName {
+    width: 80px !important;
+}
+div#conlastName {
+    position: relative !important;
+    left: 37px !important;
+}
+input#organizetion {
+    width: 150px !important;
+    display: inline-block !important;
+}
+input#PHone {
+    display: inline-block !important;
+    width: 145px !important;
+}
+div#phone {
+    position: relative !important;
+    width: 120px !important;
+    left: 194px !important;
+    top: -67px !important;
+}
+
+div#email {
+    float: left !important;
+    position: relative !important;
+    left: -159px !important;
+}
+input#Email {
+    width: 143px !important;
+}
+input#Fax {
+    width: 147px !important;
+}
+div#fax {
+    position: relative !important;
+    top: -72px !important;
+    left: 192px !important;
+}
+div#contactAddress {
+    position: relative !important;
+    top: -72px !important;
+}
+div#conZipTop {
+    gap: 5px !important;
+}
+input#con-Zip {
+    width: 114px !important;
+}
+div#conditionChecked {
+    position: relative !important;
+    top: -69px !important;
+}
+div#con-submit {
+    position: relative !important;
+    top: -64px !important;
+}
+.contact__section__2 {
+    height: 551px !important;
+}
+a#con-services, a#con-condition {
+    color: #118ACC !important;
+}
+.steps__container ul.nav-wizard li {
+    left: -12px !important;
+}
+.contact__logo {
+    width: 76% !important;
+    margin-right: 9px;
+}
+.contact__logo img {
+    height: 41px !important;
+}
+.contact__first__information {
+    width: 225px !important;
+    position: relative !important;
+    top: -5px !important;
+}
+.company__info__box {
+    width: 225px !important;
+}
+.contact__second__information {
+    left: -155px !important;
+    width: 150px !important;
+    top: -24px !important;
+}
+.contact__body__information_section.majortextsize {
+    top: 102px !important;
+}
+.contact__statut_logo__info {
+    position: relative !important;
+    top: 125px !important;
+    left: -141px !important;
+}
+.contact__footer__info__box {
+    margin-top: 95px !important;
+}
+.contact__custom__b.majortextsize {
+    flex-wrap: wrap !important;
+}
+.row.majortextsize {
+    padding: 0 !important;
+    position: relative !important;
+    top: -12px !important;
+}
+.contact__section__3 {
+    position: relative !important;
+    top: -13px !important;
+}
+.contact__footer__info__box p {
+  font-size:10.7px !important;
+  }
+.contact__custom__b p {
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
+}
+.contact__user__info__box.majortextsize {
+    min-width: 135px !important;
+}
+.contact__user__info__box.majortextsize ul {
+    position: relative !important;
+    left: 40px !important;
+}
+.contact__custom__b {
+    flex-wrap: wrap !important;
+}
+span#conFax {
+    position: relative !important;
+    top: -24px !important;
+    left: -101px !important;
+}
+
+.contact__user__info__box {
+    height: 80px !important;
+}
+li#telePhone b, li#faX b, li#emaiL b {
+    display: none !important;
+}
+div#informContact {
+    position: relative !important;
+    top: 5px !important;
+    left: -1px !important;
+}
+li#emaiL {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.send-success.majortextsize {
+    font-size: 12.3px !important;
+}
+.contact__statut__logo {
+    font-size: 17px !important;
+}
+
+
+
+}
+
+.contact__client__info__box {
+  border: 1px solid black;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+  .company__info__box ul,
+  .contact__client__info__box ul,
+  .contact__client__info__box__2 ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  }
+  .company__info__box ul li,
+  .contact__client__info__box ul li,
+  .contact__client__info__box__2 ul li{
+  font-size: 13px !important;
+  color: #000;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 18px;
+  }
+  
+     .contact__main__container{
+      display: flex;
+      justify-content: space-between;
+      gap:10px;
+   }
+   .contact__main__container .left__section{
+      width: calc(100% - 500px);
+   }
+   .contact__main__container .right__section {
+     width: 500px;
+     padding: 10px 0px;
+   }
+   .custom__contact__form select {
+     padding: 6px 2px;
+   }
+   .custom__contact__form select[name='user_type'] {
+     width: 140px;
+   }
+
+   .custom__contact__form select[name='department_id'] {
+     width: 105px;
+   }
+
+   .custom__contact__form select[name='priority_id'] {
+     width: 105px;
+   }
+   .custom__contact__form select[name='purpose_id'] {
+     width: 105px;
+   }
+   .custom__contact__form #company_work_zone_map{
+       height: 350px;
+       width: 500px;
+    }
