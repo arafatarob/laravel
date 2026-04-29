@@ -1,0 +1,35 @@
+#leafCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* এটিকে অন্যান্য উপাদানের পিছনে রাখতে */
+            opacity: 0.8; /* হালকা স্বচ্ছ করা হয়েছে যাতে নিচের কন্টেন্ট দেখা যায় */
+        }
+
+        /* এই কন্টেইনারে আপনার ওয়েবপেজের মূল কন্টেন্ট থাকবে */
+        .page-content {
+            position: relative;
+            z-index: 1; /* ক্যানভাসের উপরে থাকবে */
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        /* ডেমো কন্টেন্টের জন্য স্টাইল */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
