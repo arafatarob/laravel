@@ -1,0 +1,82 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'user') DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT DEFAULT 0,
+    image VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+);
+
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    status ENUM('pending', 'processing', 'completed', 'cancelled') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    product_id INT,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+
+
+
+
+-- 1. Users Table-e data insert (Password: 'password123' - hashed logic thakle pore change korben)
+INSERT INTO users (name, email, password, role) VALUES 
+('Md Arafat Hossain', 'arafat@example.com', 'password123', 'admin'),
+('Rahat Ahmed', 'rahat@example.com', 'password123', 'user'),
+('Sumon Ali', 'sumon@example.com', 'password123', 'user');
+
+-- 2. Categories Table-e data insert
+INSERT INTO categories (name, slug) VALUES 
+('Electronics', 'electronics'),
+('Fashion', 'fashion'),
+('Home Appliances', 'home-appliances');
+
+-- 3. Products Table-e data insert
+INSERT INTO products (category_id, name, description, price, stock, image) VALUES 
+(1, 'Smartphone Pro Max', 'High performance smartphone with 12GB RAM', 999.99, 50, 'phone.jpg'),
+(1, 'Wireless Headphones', 'Noise cancelling over-ear headphones', 199.50, 100, 'headphones.jpg'),
+(2, 'Men\'s Casual Shirt', '100% Cotton slim fit shirt', 25.00, 200, 'shirt.jpg'),
+(3, 'Smart Coffee Maker', 'Automatic coffee brewer with timer', 85.00, 30, 'coffee.jpg');
+
+-- 4. Orders Table-e data insert
+INSERT INTO orders (user_id, total_amount, status) VALUES 
+(2, 1199.49, 'completed'),
+(3, 25.00, 'pending');
+
+-- 5. Order_Items Table-e data insert
+-- Order 1 has 1 Smartphone and 1 Headphone
+INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES 
+(1, 1, 1, 999.99),
+(1, 2, 1, 199.50),
+-- Order 2 has 1 Shirt
+(2, 3, 1, 25.00);

@@ -18,12 +18,11 @@ Route::get('/dashboard/user', [DashboardController::class, 'dashboard'])->name('
 Route::get('/dashboard/user/order_service', [DashboardController::class, 'orderService'])->name('orderService');
 Route::get('/dashboard/user/my_order', [DashboardController::class, 'myOrder'])->name('myOrder');
 Route::get('/dashboard/user/myProfile', [DashboardController::class, 'myProfile'])->name('myProfile');
-Route::get('/dashboard/user/myProfile', [DashboardController::class, 'myProfile'])->name('myProfile');
 Route::get('/dashboard/user/setting', [DashboardController::class, 'setting'])->name('setting');
 
 
 Route::get('/dashboard/admin', [AdminController::class, 'adminPanel'])->name('adminPanel');
-Route::get('/dashboard/admin/service', [AdminController::class, 'service'])->name('service');
+Route::get('/dashboard/admin/services', [AdminController::class, 'service'])->name('service');
 Route::get('/dashboard/admin/order', [AdminController::class, 'order'])->name('order');
 Route::get('/dashboard/admin/user', [AdminController::class, 'user'])->name('user');
 Route::get('/dashboard/admin/team', [AdminController::class, 'team'])->name('team');
@@ -33,5 +32,8 @@ Route::get('/dashboard/admin/testimonials', [AdminController::class, 'testimonia
 Route::get('/dashboard/admin/pricing', [AdminController::class, 'pricing'])->name('pricing');
 Route::get('/dashboard/admin/setting', [AdminController::class, 'setting'])->name('setting');
 Route::get('/dashboard/admin/analytics', [AdminController::class, 'analytics'])->name('analytics');
+
+Route::get('/dashboard/admin/signup', [AdminController::class, 'admin_auth'])->name('admin_auth');
+Route::get('/dashboard/admin/login', [AdminController::class, 'admin_login'])->name('admin_login');
 
 

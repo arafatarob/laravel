@@ -314,10 +314,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function submitOrder() {
-            alert('Order submitted successfully! We will contact you soon.');
+            const body = `
+                <div class="modal-success-card">
+                    <div class="modal-success-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="modal-success-text">
+                        <h3>Order submitted successfully!</h3>
+                        <p>Your request is now confirmed and our team will contact you soon.</p>
+                    </div>
+                </div>`;
+
+            openEntityModal('Submission Complete', body, 'Continue', () => {
+                closeModal('generic-modal');
+                window.location.href = '/dashboard/user/my_order';
+            });
+
             currentStep = 1;
             updateSteps();
-            showPage('user-dashboard');
         }
 
         function toggleProfileMenu(event) {
@@ -397,7 +411,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function submitServiceForm() {
+            const serviceNameField = document.getElementById('service-name');
+            const serviceDescriptionField = document.getElementById('service-description');
+            const servicePriceField = document.getElementById('service-price');
+
+            const serviceName = serviceNameField ? serviceNameField.value.trim() : '';
+            const serviceDescription = serviceDescriptionField ? serviceDescriptionField.value.trim() : '';
+            const servicePrice = servicePriceField ? servicePriceField.value.trim() : '';
+
+            let valid = true;
+            [serviceNameField, serviceDescriptionField, servicePriceField].forEach(field => {
+                if (!field) return;
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    valid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            if (!valid) {
+                return;
+            }
+
             closeModal('service-modal');
+
+            const body = `
+                <div style="text-align: left; line-height: 1.6;">
+                    <p style="font-size: 1rem; margin-bottom: 1rem;">Your new service has been added successfully.</p>
+                    <p><strong>Service:</strong> ${serviceName}</p>
+                    <p><strong>Price:</strong> ${servicePrice}</p>
+                    <p style="margin-top: 1rem;">It will now appear in the dashboard list.</p>
+                </div>`;
+
+            openEntityModal('Service Added', body, 'Done');
+
+            if (serviceNameField) serviceNameField.value = '';
+            if (serviceDescriptionField) serviceDescriptionField.value = '';
+            if (servicePriceField) servicePriceField.value = '';
         }
 
         function submitUserForm() {
@@ -416,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal('testimonial-modal');
         }
 
-        function openEntityModal(title, body, actionText = 'OK') {
+        function openEntityModal(title, body, actionText = 'OK', actionCallback = null) {
             const modal = document.getElementById('generic-modal');
             const modalTitle = document.getElementById('generic-modal-title');
             const modalBody = document.getElementById('generic-modal-body');
@@ -430,7 +481,13 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTitle.textContent = title;
             modalBody.innerHTML = body;
             modalAction.textContent = actionText;
-            modalAction.onclick = () => closeModal('generic-modal');
+            modalAction.onclick = () => {
+                if (typeof actionCallback === 'function') {
+                    actionCallback();
+                } else {
+                    closeModal('generic-modal');
+                }
+            };
             modal.classList.add('active');
         }
 

@@ -10,7 +10,7 @@
 
                 <div class="nav-section">
                     <div class="nav-section-title">Management</div>
-                    <div class="nav-item" onclick="window.location.href='/dashboard/admin/service'">💼 Services</div>
+                    <div class="nav-item" onclick="window.location.href='/dashboard/admin/services'">💼 Services</div>
                     <div class="nav-item" onclick="window.location.href='/dashboard/admin/order'">📋 Orders</div>
                     <div class="nav-item" onclick="window.location.href='/dashboard/admin/user'">👥 Users</div>
                     <div class="nav-item" onclick="window.location.href='/dashboard/admin/team'">👨‍💼 Team</div>

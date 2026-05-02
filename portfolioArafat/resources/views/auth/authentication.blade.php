@@ -28,12 +28,12 @@
                     <input type="email" name="email" class="form-control" placeholder="Email address" required>
                     <i class="ri-mail-fill"></i>
                 </div>
-                @error('email')
-                    <span class="danger">{{ $message }}</span>
-                @enderror
                 <div class="form-group">
                     <input type="text" name="number" class="form-control" placeholder="Phone Number">
                     <i class="ri-phone-fill"></i>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="image" id="image">
                 </div>
                 <div class="password-group form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Create Password" required>

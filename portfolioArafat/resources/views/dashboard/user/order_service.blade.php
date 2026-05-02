@@ -114,7 +114,16 @@
                                 <label class="form-label">Budget</label>
                                 <select class="form-select" id="budget">
                                     <option>Select budget</option>
-                                    <option>Under $1000</option>
+                                    <option>$20</option>
+                                    <option>$40</option>
+                                    <option>$50</option>
+                                    <option>$80</option>
+                                    <option>$100</option>
+                                    <option>$200</option>
+                                    <option>$300</option>
+                                    <option>$400 - $600</option>
+                                    <option>$400 - $600</option>
+                                    <option>$700 - $1000</option>
                                     <option>$1000 - $5000</option>
                                     <option>$5000 - $10000</option>
                                     <option>$10000+</option>

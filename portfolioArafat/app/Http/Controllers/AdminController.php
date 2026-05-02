@@ -39,4 +39,10 @@ class AdminController extends Controller
     public function analytics(){
         return view('dashboard.admin.analytics');
     }
+    public function admin_auth(){
+        return view('dashboard.admin.auth.signup');
+    }
+    public function admin_login(){
+        return view('dashboard.admin.auth.login');
+    }
 }
