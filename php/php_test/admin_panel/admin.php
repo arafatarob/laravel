@@ -1,4 +1,4 @@
-<?php include('db.php'); ?>
+<?php require('common/db.php'); ?>
 
 
 
@@ -54,7 +54,6 @@
     </div>
 
     <?php
-    include('db.php');
     if(isset($_POST['update_status'])){
         $order_id = $_POST['order_id'];
         $status = $_POST['status'];
