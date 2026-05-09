@@ -30,10 +30,10 @@
                 while($user = $res->fetch_assoc()):
                 ?>
                 <tr>
-                    <td class="p-2 border">#<?php echo $user['id']; ?></td>
-                    <td class="p-2 border"><?php echo $user['name']; ?></td>
-                    <td class="p-2 border"><?php echo $user['email']; ?></td>
-                    <td class="p-2 border"><?php echo $user['role']; ?></td>
+                    <td class="p-2 border" data-label="User">#<?php echo $user['id']; ?></td>
+                    <td class="p-2 border" data-label="Name"><?php echo $user['name']; ?></td>
+                    <td class="p-2 border" data-label="Email"><?php echo $user['email']; ?></td>
+                    <td class="p-2 border" data-label="Role"><?php echo $user['role']; ?></td>
                     <!-- <td class="p-2 border">
                         <form method="POST" class="flex gap-2">
                             <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">

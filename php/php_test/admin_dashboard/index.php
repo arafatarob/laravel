@@ -20,11 +20,34 @@ include('./common/db.php');
             z-index: 9999;
             background: rgba(0, 0, 0, 0.2);
         }
+        .search_box {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    height: 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+        .search_box input {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background: transparent;
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+}
     </style>
 </head>
 <body class="bg-gray-50">
     <nav class=" p-5 shadow mb-10 flex justify-between items-center px-10" style="background: #1a1a2e;">
         <h1 class="text-xl font-bold text-white">Madhuri - Jannat - Store</h1>
+        <form action="" method="get">
+            <div class="search_box">
+                <input type="text" name="search" placeholder="Search...." autocomplete="off">
+            </div>
+        </form>
         <div class="flex items-center">
             <button onclick="toggleCart()" class="relative p-2 rounded-full mr-4 hover:bg-gray-200" style="box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);">
                 🛒 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] px-1.5 rounded-full">
@@ -76,6 +99,12 @@ include('./common/db.php');
         
         <?php
         $result = $conn->query("SELECT * FROM products");
+            if(isset($_GET['search'])){
+                $search = $_GET['search'];
+                $sql = "SELECT * FROM products WHERE concat(name) LIKE '%$search%'";
+
+                $result = mysqli_query($conn,$sql);
+            }
         while($row = $result->fetch_assoc()):
 
             $img_src = !empty($row['image']) ? "./image/" . $row['image'] : "image/avatar.png";

@@ -29,10 +29,10 @@
                 while($order = $res->fetch_assoc()):
                 ?>
                 <tr>
-                    <td class="p-2 border"><?php echo $order['name']; ?></td>
-                    <td class="p-2 border">$<?php echo $order['total_amount']; ?></td>
-                    <td class="p-2 border"><?php echo $order['status']; ?></td>
-                    <td class="p-2 border">
+                    <td class="p-2 border" data-label="User"><?php echo $order['name']; ?></td>
+                    <td class="p-2 border" data-label="Amount">$<?php echo $order['total_amount']; ?></td>
+                    <td class="p-2 border" data-label="Status"><?php echo $order['status']; ?></td>
+                    <td class="p-2 border" data-label="Action">
                         <form method="POST" class="flex gap-2">
                             <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
                             <select name="status" class="border text-sm">
