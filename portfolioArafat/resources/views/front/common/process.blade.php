@@ -1,6 +1,6 @@
 <!-- process area -->
 
-    <section class="processArea section-margin">
+    <section class="processArea section-margin about-wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-12">

@@ -1,7 +1,7 @@
 <!-- portfolio -->
 
 
-    <section class="portfolio-area section-margin">
+    <section class="portfolio-area section-margin hero">
         <div class="container">
             <div class="row">
                 <div class="col-12">

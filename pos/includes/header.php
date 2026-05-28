@@ -31,6 +31,9 @@ $page_title = $page_title ?? ucfirst($current);
       $links = [
         ['dashboard','Dashboard','bi-grid-1x2-fill'],
         ['products','Products','bi-box-seam'],
+        ['categories','Categories','bi-tags'],
+        // ['sub_categories','Sub Categories','bi-layers'],
+        ['brands','Brands','bi-patch-check'],
         ['sales','Sales','bi-cart-check'],
         ['purchases','Purchases','bi-bag-plus'],
         ['customers','Customers','bi-people'],

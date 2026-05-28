@@ -1,6 +1,16 @@
 <?php
 
 session_start();
+$id = "";
+$pass = "";
+if(isset($_COOKIE['email']) && isset($_COOKIE['password'])){
+  $id=$_COOKIE['email'];
+  $pass=$_COOKIE['password'];
+}else{
+  $id = "";
+  $pass = "";
+}
+
     require('common/connection.php');
 
     if(isset($_POST['login'])){
@@ -14,12 +24,21 @@ session_start();
       if($password == $user['password']){
         $_SESSION['name'] = $user['name'];
         $_SESSION['user_role'] = $user['role'];
+        if(isset($_POST['remember'])){
+          setcookie('email', $_POST['email'], time() + (60*60*24));
+          setcookie('password', $_POST['password'], time() + (60*60*24));
+        }else{
+            setcookie('email', '', time() - (60*60*24));
+            setcookie('password', '', time() - (60*60*24));
+        }
         echo "Login successfully";
         header('Location: welcome.php');
       }else{
         echo "<script>alert('Invalid User and Password')</script>";
       }
     }
+
+
 
 ?>
 
@@ -119,6 +138,11 @@ h2 {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+.remember{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
     </style>
 </head>
 <body>
@@ -129,13 +153,17 @@ h2 {
 
             <div class="input-group">
                 <label for="email">Email Address</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                <input type="email" value="<?php echo $id; ?>" name="email" id="email" placeholder="Enter your email" required>
             </div>
 
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="••••••••" required>
+                <input value="<?php echo $pass; ?>" type="password" autocomplete="off" name="password" id="password" placeholder="••••••••" required>
             </div>
+
+                <label for="remember" class="remember"><input type="checkbox" autocomplete="new-password" name="remember" id="remember" placeholder="••••••••">
+                  remember me</label>
+
 
             <button type="submit" name="login" class="submit-btn">login</button>
         </form>

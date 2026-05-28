@@ -1,4 +1,93 @@
+// about me
+const totalSlides = 4;
+  let current = 0;
+  let autoTimer = null;
+  let progressTimer = null;
+  let progressVal = 0;
+  const AUTO_INTERVAL = 4000;
 
+  const track = document.getElementById('track');
+  const pbar = document.getElementById('pbar');
+  const dotsEl = document.getElementById('dots');
+
+  for (let i = 0; i < totalSlides; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function updateDots() {
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(n) {
+    current = (n + totalSlides) % totalSlides;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    updateDots();
+    resetProgress();
+  }
+
+  function resetProgress() {
+    clearInterval(autoTimer);
+    clearInterval(progressTimer);
+    progressVal = 0;
+    pbar.style.width = '0%';
+    startProgress();
+    startAuto();
+  }
+
+  function startProgress() {
+    progressTimer = setInterval(() => {
+      progressVal += 100 / (AUTO_INTERVAL / 50);
+      if (progressVal >= 100) progressVal = 100;
+      pbar.style.width = progressVal + '%';
+    }, 50);
+  }
+
+  function startAuto() {
+    autoTimer = setTimeout(() => {
+      goTo(current + 1);
+    }, AUTO_INTERVAL);
+  }
+
+  document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+  document.getElementById('prevBtn').onclick = () => goTo(current - 1);
+
+  resetProgress();
+
+// client review
+
+   const track = document.getElementById('sliderTrack');
+  const cards = track.querySelectorAll('.rev-card');
+  const dotsEl = document.getElementById('dots');
+  const total = cards.length;
+  const visible = 3;
+  const maxIndex = total - visible;
+  let current = 0;
+
+  for (let i = 0; i <= maxIndex; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, maxIndex));
+    const cardW = cards[0].offsetWidth + 20;
+    track.style.transform = 'translateX(-' + (current * cardW) + 'px)';
+    dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('prevBtn').onclick = () => goTo(current - 1);
+  document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+
+  let autoTimer = setInterval(() => goTo(current >= maxIndex ? 0 : current + 1), 300);
+  track.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  track.addEventListener('mouseleave', () => { autoTimer = setInterval(() => goTo(current >= maxIndex ? 0 : current + 1), 3500); });
 //   smooth scroll 
 
   // const lenis = new Lenis({

@@ -1,52 +1,131 @@
+<div class="about-wrapper section-margin" id="aboutMe">
+  <div class="progress-bar" id="pbar" style="width:0%"></div>
 
-<!-- about me area -->
+  <div class="about-header">
+    <h1>ABOUT ME</h1>
+    <div class="header-line"></div>
+  </div>
 
-    <section class="aboutMe-area" id="aboutMe">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="aboutMe-heading heading section-margin">
-                        <h2>about me</h2>
-                    </div>
-                    <div class="about-me d-flex">
-                        <div class="col-12">
-                            <div class="aboutme-details d-flex">
-                                <div class="col-md-5 experince-image">
+  <div class="slider-container">
+    <div class="slides-track" id="track">
 
-                                    <div class="pictures">
-                                        <img src="{{ asset('assets/img/my-img/left-side.png') }}" alt="">
-                                    </div>
-
-                                </div>
-                                <div class="col-md-7 experince">
-                                    <h5>experience</h5>
-
-                                    <p>
-                                        I am a versatile professional skilled in <b>front-end development</b> and
-                                        <b>digital beting</b>, delivering <b>responsive</b>, <b>user-friendly
-                                            interfaces</b> and <b>data-driven strategies</b> that drive growth. With
-                                        experience working with local and international clients, I create seamless
-                                        digital experiences that captivate users while optimizing online presence
-                                        through <b>lead generation</b>, <b>email beting</b>, <b>targeted ads</b>, and
-                                        <b>YouTube SEO</b>. Passionate about <b>design</b>, <b>innovation</b>, and
-                                        <b>measurable results</b>, I bridge technology and beting to help businesses
-                                        succeed in the digital landscape.
-
-                                        Beyond technical and beting expertise, I bring strong <b>problem-solving</b>,
-                                        <b>project management</b>, and <b>collaboration skills</b>, ensuring smooth
-                                        communication and timely delivery of projects. Always eager to learn and adapt,
-                                        I stay updated with the latest industry trends to provide modern, effective
-                                        solutions. My ultimate goal is to combine creativity with strategy to build
-                                        digital experiences that not only look great but also deliver measurable
-                                        business success.
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <!-- Slide 1: Experience -->
+      <div class="slide">
+        <div class="slide-inner">
+          <div class="slide-image-area">
+            <div class="avatar-frame">
+              <span class="avatar-letter">S</span>
             </div>
+            <div class="slide-badge">⚡ Available For Work</div>
+          </div>
+          <div class="slide-content">
+            <div class="slide-label">01 / Who I Am</div>
+            <div class="slide-title">Experience & Vision</div>
+            <p class="slide-text">I am a versatile professional skilled in Front-End Development and Digital Marketing, delivering responsive, user-friendly interfaces and data-driven strategies that drive real business growth.</p>
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="stat-num">3+</div>
+                <div class="stat-label">Years Exp.</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">50+</div>
+                <div class="stat-label">Projects Done</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Satisfaction</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-    </section>
+      <!-- Slide 2: Skills -->
+      <div class="slide">
+        <div class="slide-inner">
+          <div class="slide-image-area">
+            <div class="avatar-frame" style="background: linear-gradient(145deg, #002244, #005599);">
+              <span class="avatar-letter">💻</span>
+            </div>
+            <div class="slide-badge">🔥 Top Rated</div>
+          </div>
+          <div class="slide-content">
+            <div class="slide-label">02 / What I Do</div>
+            <div class="slide-title">Technical Skills</div>
+            <p class="slide-text">I build seamless digital experiences with modern technologies, combining clean code with creative design thinking to deliver exceptional results for local and international clients.</p>
+            <div class="skill-tags">
+              <span class="skill-tag highlight">HTML / CSS</span>
+              <span class="skill-tag highlight">JavaScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">YouTube SEO</span>
+              <span class="skill-tag">Email Marketing</span>
+              <span class="skill-tag">Lead Generation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Marketing -->
+      <div class="slide">
+        <div class="slide-inner">
+          <div class="slide-image-area">
+            <div class="avatar-frame" style="background: linear-gradient(145deg, #1a4d00, #2e8b00);">
+              <span class="avatar-letter">📈</span>
+            </div>
+            <div class="slide-badge">🎯 Results Focused</div>
+          </div>
+          <div class="slide-content">
+            <div class="slide-label">03 / Digital Growth</div>
+            <div class="slide-title">Marketing Strategy</div>
+            <p class="slide-text">Passionate about design, innovation, and measurable results — I bridge technology and marketing to help businesses succeed. I stay updated with the latest industry trends to provide modern, effective solutions.</p>
+            <div class="skill-tags">
+              <span class="skill-tag highlight">Targeted Ads</span>
+              <span class="skill-tag highlight">SEO Optimization</span>
+              <span class="skill-tag">Project Management</span>
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">Collaboration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Goal -->
+      <div class="slide">
+        <div class="slide-inner">
+          <div class="slide-image-area">
+            <div class="avatar-frame" style="background: linear-gradient(145deg, #4a0033, #990055);">
+              <span class="avatar-letter">🚀</span>
+            </div>
+            <div class="slide-badge">🌍 Global Reach</div>
+          </div>
+          <div class="slide-content">
+            <div class="slide-label">04 / My Mission</div>
+            <div class="slide-title">Ultimate Goal</div>
+            <p class="slide-text">My ultimate goal is to combine creativity with strategy to build digital experiences that not only look great but also deliver measurable business success. Let's create something extraordinary together.</p>
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="stat-num">24/7</div>
+                <div class="stat-label">Support</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">Fast</div>
+                <div class="stat-label">Delivery</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">✓</div>
+                <div class="stat-label">Quality Work</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nav-area">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous slide">‹</button>
+    <div class="dots" id="dots"></div>
+    <button class="nav-btn" id="nextBtn" aria-label="Next slide">›</button>
+  </div>
+</div>
