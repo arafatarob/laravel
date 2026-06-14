@@ -7,11 +7,6 @@
     font-family: 'poppins', sans-serif;
 }
 
-a{
-  text-decoration: none;
-  color: #fff;
-}
-
 body {
     background: #0b0423;
     width: 100%;
@@ -82,15 +77,6 @@ aside {
     text-transform: uppercase;
     margin: 0 0 20px 0;
     padding: 4px 15px;
-}
-
-.add{
-  font-size: 22px;
-  text-align: left;
-  color: #fff;
-  text-transform: uppercase;
-  margin: 0 0 20px 0;
-  padding: 4px 15px;
 }
 
 aside ul {
@@ -367,31 +353,20 @@ td img {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255, 0.5);
+    background: rgba(255,255,255,0.3);
     left: 0;
     right: 0;
-    top: 0;
+    top: -1000px;
     bottom: 0;
-    backdrop-filter: blur(100px);
-
-    animation: toTop 2s forwards;
-}
-
-@keyframes toTop {
-  from{
-    transform: translateY(-1000px);
-  }
-  to{
-      transform: translateY(0);
-  }
+    backdrop-filter: blur(10px);
 }
 
 .container {
     width: 90%;
-    max-width: 450px;
+    max-width: 400px;
     background: rgba(0,0,0,0.5);
     height: auto;
-    padding: 50px 30px;
+    padding: 15px 30px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -399,84 +374,6 @@ td img {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border: 1px solid rgba(255,255,255, 0.5);
-}
-
-.container form a {
-    text-decoration: none;
-    color: #fff;
-    display: inline-block;
-    width: 26px;
-    text-align: right;
-    position: absolute;
-    left: 14px;
-    top: 13px;
-}
-
-
-.container form .backBtn {
-    position: absolute;
-    top: 48px;
-    left: 11px;
-    background: #fff;
-    color: #000;
-    padding: 4px 12px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: all 0.6s ease-in-out;
-    transform: translateY(20px);
-}
-
-.container form a:hover + .backBtn{
-  display: block;
-  opacity: 1;
-  transform: translateY(-4px);
-}
-
-.container form a span {
-    text-decoration: none;
-    color: #fff;
-    display: inline-block;
-    width: 100%;
-    text-align: right;
-}
-
-.container {
-    position: relative;
-}
-
-.container form a span {
-    font-size: 25px;
-}
-
-.card h3 {
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-align: center;
-    margin: 0 0 15px 0;
-    text-decoration: underline;
-}
-
-.card_inner span {
-    font-size: 18px;
-    text-transform: capitalize;
-}
-
-.card_d {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card_item{
-  margin-bottom: 20px;
-}
-
-.card_item span img {
-    width: 200px;
-    border-radius: 6px;
-    height: 200px;
 }
 
 

@@ -7,8 +7,13 @@
 
 ?>
 <main>
-  <div class="title">
-    product's
+  <div class="top">
+    <div class="title">
+      product's
+    </div>
+    <div class="add">
+      <a href="#">add product's</a>
+    </div>
   </div>
   <table>
     <tr>
@@ -40,7 +45,8 @@
       <td><?= $item['price'] ?></td>
       <td><?= $item['stock'] ?></td>
       <td>
-        <a href="#">view</a>
+        <a href="product_view.php?id=<?php echo $item['id'] ?>">view</a>
+        <a href="#">edit</a>
         <a href="#">delete</a>
       </td>
 
