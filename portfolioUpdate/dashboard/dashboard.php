@@ -4,16 +4,19 @@ session_start();
 
   $select = $conn->query("SELECT COUNT(id) AS total_users FROM users");
   $select_order = $conn->query("SELECT COUNT(id) AS total_orders FROM orders");
-  $select_earning = $conn->query("SELECT SUM(amount) AS total_earning FROM orders");
+  $select_earning = $conn->query("SELECT SUM(amount) AS total_earning FROM orders where status='completed'");
   $select_complete = $conn->query("SELECT COUNT(id) AS completed_order FROM orders where status='completed' ");
-  $select_pending = $conn->query("SELECT COUNT(id) AS pending_order FROM orders where status='pending' ");
+  $select_pending = $conn->query("SELECT COUNT(id) AS pending_order FROM orders where status='pending' OR status='Processing' ");
   $select_cancalled = $conn->query("SELECT COUNT(id) AS cancalled_order FROM orders where status='cancalled' ");
-  $select_user = $conn->query("SELECT users.id, users.name, users.email, users.password, users.role, users.users_activity, role.role_name
-    FROM users INNER JOIN
-    role ON users.role = role.id
-  ");
+  $select_user = $conn->query("SELECT users.id, users.name, users.email, users.users_activity, role.role_name,
+    COUNT(orders.user_id) AS totalUserOrder
+    FROM users
+    INNER JOIN role ON users.role = role.id
+    LEFT JOIN orders ON users.id = orders.user_id
+    GROUP BY users.id DESC");
   $select_orders = $conn->query("SELECT * FROM orders ORDER BY id DESC");
   $userId = $_SESSION['user_id'];
+  $select_Self_order_count = $conn->query("SELECT COUNT(user_id) AS totalUserOrder FROM orders WHERE user_id = '$userId' ");
   $select_last_activity = "SELECT users_activity FROM users WHERE id = ?";
   $stm = $conn->prepare($select_last_activity);
   $stm->bind_param("i", $userId);
@@ -28,6 +31,8 @@ session_start();
   $C_orders = $select_complete->fetch_assoc();
   $P_orders = $select_pending->fetch_assoc();
   $c_orders = $select_cancalled->fetch_assoc();
+  $user_total_order = $select_Self_order_count->fetch_assoc();
+  $my_total_order = $user_total_order['totalUserOrder'];
 
 
   if($t_earning == null){
@@ -39,7 +44,13 @@ session_start();
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>dashboard</title>
+    <?php if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager')
+
+    ?>
+      <title> <?php echo $_SESSION['user_role'] . " " . 'Dashboard' ?> </title>
+  <? }else{ ?>
+      <title> <?php echo $_SESSION['user_role'] . " " . 'Dashboard' ?> </title>
+    <?}?>
     <script src="https://kit.fontawesome.com/e68d9b315c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/dashboard.css">
     <style media="screen">
@@ -85,75 +96,91 @@ session_start();
             <h2>cancalled order's : <br> <span><?php echo sprintf('%02d', $c_orders['cancalled_order']) ?></span></h2>
           </div>
         </div>
-        <div class="revenue">
-          <div class="recentUsers">
-            <div class="title_card">
-              Recent User's
-            </div>
-            <div class="users">
-              <div class="user_container">
-                <div class="user_heading">
-                  <h2>name</h2>
-                  <h2>email</h2>
-                  <h2>role</h2>
-                  <h2>last activity</h2>
-                </div>
-                <?php while($users = $select_user->fetch_assoc()){ ?>
-                  <div class="user_body">
-                    <h2><?= $users['name'] ?></h2>
-                    <h2><?= $users['email'] ?></h2>
-                    <h2><?= $users['role_name'] ?></h2>
-                    <h2>
-                    <?php
-                        if(!empty($users['users_activity'])){
-                        $timeZone = new DateTimeZone('Asia/Dhaka');
-                          $loginTime = new DateTime($users['users_activity'], $timeZone);
-                          $currentTime = new DateTime('now', $timeZone);
-                          $intervel = $currentTime->diff($loginTime);
-
-                          if($intervel->d < 1 && $intervel->h < 1 && $intervel->i < 1){
-                            echo "Just Now";
-                          } elseif($intervel->d < 1 && $intervel->h < 1){
-                            echo $intervel->i . " Minutes Ago";
-                          }elseif($intervel->d < 1){
-                            echo $intervel->h . " Hour Ago";
-                          }else{
-                            echo $intervel->d . " Day Ago";
-                          }
-                        }else{
-                          echo "Never Active";
-                        }
-                     ?>
-                   </h2>
-                  </div>
-                <?php } ?>
-              </div>
-            </div>
+        <?php if($_SESSION['user_role'] === 'User') { ?>
+          <div class="title_card">
+            my Analytics
           </div>
-          <div class="recentOrders">
-            <div class="title_card">
-              Recent order's
+        <?php } ?>
+        <div class="summery_inner">
+          <?php if($_SESSION['user_role'] === 'User') { ?>
+            <div class="summery7 summery">
+              <h2>my order's : <br> <span><?php echo sprintf("%02d", $my_total_order)  ?></span></h2>
             </div>
-            <div class="orders">
-              <div class="order_container">
-                <div class="order_heading">
-                  <h2>details</h2>
-                  <h2>client</h2>
-                  <h2>amount</h2>
-                  <h2>platform</h2>
-                </div>
-                <?php while($orders = $select_orders->fetch_assoc()){ ?>
-                  <div class="order_body">
-                    <h2><?= $orders['Contract_Details'] ?></h2>
-                    <h2><?= $orders['client'] ?></h2>
-                    <h2><?= $orders['amount'] ?></h2>
-                    <h2><?= $orders['platform_name'] ?></h2>
-                  </div>
-                <?php } ?>
-              </div>
-            </div>
-          </div>
+          <?php } ?>
         </div>
+        <?php if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager') { ?>
+          <div class="revenue">
+            <div class="recentUsers">
+              <div class="title_card">
+                Recent User's
+              </div>
+              <div class="users">
+                <div class="user_container">
+                  <div class="user_heading">
+                    <h2>name</h2>
+                    <h2>email</h2>
+                    <h2>role</h2>
+                    <h2>total order</h2>
+                    <h2>last activity</h2>
+                  </div>
+                  <?php while($users = $select_user->fetch_assoc()){ ?>
+                    <div class="user_body">
+                      <h2><?= $users['name'] ?></h2>
+                      <h2><?= $users['email'] ?></h2>
+                      <h2><?= $users['role_name'] ?></h2>
+                      <h2><?= $users['totalUserOrder'] ?></h2>
+                      <h2>
+                      <?php
+                          if(!empty($users['users_activity'])){
+                          $timeZone = new DateTimeZone('Asia/Dhaka');
+                            $loginTime = new DateTime($users['users_activity'], $timeZone);
+                            $currentTime = new DateTime('now', $timeZone);
+                            $intervel = $currentTime->diff($loginTime);
+
+                            if($intervel->d < 1 && $intervel->h < 1 && $intervel->i < 1){
+                              echo "Just Now";
+                            } elseif($intervel->d < 1 && $intervel->h < 1){
+                              echo $intervel->i . " Minutes Ago";
+                            }elseif($intervel->d < 1){
+                              echo $intervel->h . " Hour Ago";
+                            }else{
+                              echo $intervel->d . " Day Ago";
+                            }
+                          }else{
+                            echo "Never Active";
+                          }
+                       ?>
+                     </h2>
+                    </div>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+            <div class="recentOrders">
+              <div class="title_card">
+                Recent order's
+              </div>
+              <div class="orders">
+                <div class="order_container">
+                  <div class="order_heading">
+                    <h2>details</h2>
+                    <h2>client</h2>
+                    <h2>amount</h2>
+                    <h2>platform</h2>
+                  </div>
+                  <?php while($orders = $select_orders->fetch_assoc()){ ?>
+                    <div class="order_body">
+                      <h2><?= $orders['Contract_Details'] ?></h2>
+                      <h2><?= $orders['client'] ?></h2>
+                      <h2><?= $orders['amount'] ?></h2>
+                      <h2><?= $orders['platform_name'] ?></h2>
+                    </div>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
       </div>
     </main>
 

@@ -25,12 +25,21 @@ session_start();
       WHERE id = '$orderId'");
 
       if($update){
-        echo "updated";
-        header("Location: ../dashboard/orders.php");
-      }else{
-        echo "updated failed";
+          echo "updated";
+          if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager'){
+            header("Location: ../dashboard/orders.php");
+          }else{
+            header("Location: ../dashboard/my_order.php");
+          }
+        }else{
+          if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager'){
+            header("Location: ../dashboard/orders.php");
+          }else{
+            header("Location: ../dashboard/my_order.php");
+          }
+        }
       }
-    }
+
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +47,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <title>order update</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/dashboard.css">
   </head>
   <body>
 
@@ -73,20 +82,32 @@ session_start();
             </div>
           </div>
 
+          <?php if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager') { ?>
+            <div class="form-row">
+              <div class="inputBox">
+                <select class="form-controll" name="status">
+                  <option value="Select"<?php echo ($order['status'] == 'Select') ? 'selected' : ''; ?>>Select</option>
+                  <option value="pending"<?php echo ($order['status'] == 'pending') ? 'selected' : ''; ?>>Pending</option>
+                  <option value="processing"<?php echo ($order['status'] == 'processing') ? 'selected' : ''; ?>>Processing</option>
+                  <option value="completed"<?php echo ($order['status'] == 'completed') ? 'selected' : ''; ?>>Completed</option>
+                  <option value="cancalled"<?php echo ($order['status'] == 'cancalled') ? 'selected' : ''; ?>>Cancalled</option>
+                </select>
+              </div>
+            </div>
+        <?php } else{ ?>
           <div class="form-row">
             <div class="inputBox">
               <select class="form-controll" name="status">
                 <option value="Select"<?php echo ($order['status'] == 'Select') ? 'selected' : ''; ?>>Select</option>
-                <option value="pending"<?php echo ($order['status'] == 'pending') ? 'selected' : ''; ?>>Pending</option>
-                <option value="completed"<?php echo ($order['status'] == 'completed') ? 'selected' : ''; ?>>Completed</option>
                 <option value="cancalled"<?php echo ($order['status'] == 'cancalled') ? 'selected' : ''; ?>>Cancalled</option>
               </select>
             </div>
           </div>
+        <?php } ?>
 
           <div class="form-row clientIn">
               <input type="checkbox" name="onClientBox" value="" id="client" class="">
-              <label for="client">Client Information</label>
+              <label for="client">Client Information (If Applicable)</label>
           </div>
 
           <div class="form-row d-flex clientInfo">
@@ -112,6 +133,6 @@ session_start();
       </div>
 
 
-    <script src="../assets/script.js" charset="utf-8"></script>
+    <script src="../assets/dashboard.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,20 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
 
 .d-flex{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+
+.d-block{
+  display: inline-flex !important;
 }
 
 .text-center{
@@ -25,7 +19,8 @@
     --color-primary: #fff;
     --color-secondary: #000;
     --border: 1px solid rgba(255,255,255,0.5);
-    --box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    --box-shadow: 0 0 5px #FF5FCF;
+    --glow: #FF5FCF;
     --bg-dark-blue: #0b0423;
     --transparent-bg: rgba(255,255,255,0.1);
     --backdrop-filter: blur(10px);
@@ -34,22 +29,31 @@
 }
 
 body.darkMode{
-  --color-primary: #fff;
-  --color-secondary: #000;
+  --color-primary: #000;
+  --color-secondary: #fff;
+  --glow: #6AECE1;
   --border: 1px solid rgba(0,0,0,0.5);
-  --box-shadow: 0 0 10px rgba(255,255,255,0.3);
-  --bg-dark-blue: #6e6e6e;
-  --transparent-bg: blue;
+  --box-shadow: 0 0 10px #6AECE1;
+  --bg-dark-blue: #fff;
+  --transparent-bg: rgba(255,255,255,0.2);
   --backdrop-filter: blur(10px);
   --border-radius: 8px;
-  --dark-red: #000;
+  --dark-red: #017DC7;
 }
 
-body{
+body.darkMode .sidebar_menu ul li.active a {
+  color: var(--color-secondary);
+}
+body.darkMode .sidebar_menu ul li:hover a {
+  color: var(--color-secondary);
+}
+
+body {
     background: var(--bg-dark-blue);
     width: 100%;
-    height: 100vh;
     position: relative;
+    height: 100%;
+    min-height: 100vh;
 }
 
 .container-custome{
@@ -202,7 +206,7 @@ aside{
 }
 
 .titleBar {
-    font-size: 30px;
+    font-size: 25px;
     text-transform: uppercase;
     text-align: center;
     line-height: 60px;
@@ -230,20 +234,33 @@ aside{
 
 .sidebar_menu ul li.active {
     background: var(--dark-red);
+    box-shadow: var(--box-shadow);
+    border-radius: 30px 0 0 30px;
 }
 
 .sidebar_menu ul li.active a{
   transform: translateX(15px);
-  font-size: 23px;
+  font-size: 21px;
+}
+
+.sidebar_menu ul li.active a i{
+  color: var(--glow);
 }
 
 .sidebar_menu ul li:hover{
-  font-size: 23px;
+  font-size: 21px;
   background: var(--dark-red);
+  box-shadow: var(--box-shadow);
+  color: var(--glow);
+  border-radius: 30px 0 0 30px;
+}
+
+.sidebar_menu ul li:hover a i{
+  color: var(--glow);
 }
 
 .sidebar_menu ul li a {
-    font-size: 22px;
+    font-size: 19px;
     text-transform: uppercase;
     width: 100%;
     height: 100%;
@@ -252,13 +269,44 @@ aside{
     color: var(--color-primary);
     transition: all 0.6s ease-in-out;
 }
+
+
+
+.bottom_bar{
+  position: fixed;
+  bottom: 20px;
+  left: 35px;
+}
+
+.bottom_bar a {
+    font-size: 25px;
+    text-decoration: none;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.bottom_bar h2 {
+    font-size: 20px;
+    line-height: 32px;
+    color: var(--color-primary);
+}
+
+.account_inner h3 {
+    font-size: 25px;
+    line-height: 28px;
+    color: var(--color-primary);
+    text-align: right;
+}
+
 main {
     width: calc(100% - 234px);
     max-width: 100%;
     margin-left: 234px;
-    height: 100vh;
     margin-top: 85px;
-    padding: 10px 25px;
+    padding: 0px 25px 20px;
 }
 
 .title {
@@ -275,10 +323,21 @@ main {
   cursor: pointer;
 }
 
+.title_card{
+  font-size: 20px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  line-height: 70px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .summery_inner {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 25px;
     margin-top: 20px;
 }
 
@@ -287,8 +346,9 @@ main {
     border: var(--border);
     border-radius: var(--border-radius);
     background: var(--transparent-bg);
+    backdrop-filter: var(--backdrop-filter);
     height: 150px;
-    padding: 50px 30px;
+    padding: 23px 13px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -302,10 +362,124 @@ main {
 }
 
 .summery h2, .summery h2 span {
-    font-size: 23px;
+    font-size: 20px;
     line-height: 45px;
     color: var(--color-primary);
     text-transform: capitalize;
+}
+
+.revenue {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 20px;
+    flex-direction: row-reverse;
+}
+
+.recentUsers,
+.recentOrders{
+  flex-grow: 1;
+  width: 49%;
+}
+
+.user_container {
+    background: var(--transparent-bg);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 4px 15px;
+}
+
+.user_heading {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr 1fr;
+    border-bottom: var(--border);
+    margin: 15px 0 15px 0;
+    padding: 0 0 15px 0;
+}
+
+.user_heading h2 {
+    font-size: 17px;
+    display: inline-block;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    width: 100%;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.user_body {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr 1fr;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 18px;
+    border-radius: 4px;
+    padding: 7px 15px;
+}
+
+.user_body h2 {
+    font-size: 15px;
+    color: var(--color-primary);
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.order_container {
+    background: var(--transparent-bg);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 4px 15px;
+}
+
+.order_heading {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    border-bottom: var(--border);
+    margin: 15px 0 15px 0;
+    padding: 0 0 15px 0;
+    grid-gap: 10px;
+}
+
+.order_heading h2 {
+    font-size: 17px;
+    display: inline-block;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    width: 100%;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.order_body {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 18px;
+    border-radius: 4px;
+    padding: 7px 15px;
+    grid-gap: 10px;
+}
+
+.order_body h2 {
+    font-size: 13px;
+    color: var(--color-primary);
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .account_info {
@@ -313,6 +487,19 @@ main {
     justify-content: space-between;
     align-items: center;
     gap: 32px;
+}
+
+.inner {
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	gap: 10px;
+	height: 100%;
+}
+
+.inner i {
+	font-size: 33px;
+	color: var(--color-primary);
 }
 
 #toggle {
@@ -327,16 +514,17 @@ main {
 }
 
 #toggle #slider {
-    position: absolute;
-    width: 65px;
-    height: 30px;
-    display: inline-block;
-    border-radius: 20px;
-    background: #ccc;
-    right: 10px;
-    transition: all 0.7s ease-in-out;
-    border: var(--border);
-    box-shadow: var(--box-shadow);
+	position: absolute;
+	width: 65px;
+	height: 30px;
+	display: inline-block;
+	border-radius: 20px;
+	background: #ccc;
+	right: 10px;
+	transition: all 0.7s ease-in-out;
+	border: var(--border);
+	box-shadow: var(--box-shadow);
+	top: -4px;
 }
 
 #toggle #slider::before {
@@ -346,7 +534,7 @@ main {
     width: 23px;
     height: 23px;
     border-radius: 100%;
-    top: 1px;
+    top: 2px;
     left: -4px;
     box-shadow: var(--box-shadow);
     border: var(--border);
@@ -425,7 +613,38 @@ td {
     height: auto;
 }
 
+
+
 .form-container form h2 {
+    font-size: 25px;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* form update container css */
+
+.form-update_container {
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.form-update_container form {
+    background: var(--transparent-bg);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 20px 30px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.form-update_container form h2 {
     font-size: 25px;
     color: var(--color-primary);
     text-transform: uppercase;
@@ -527,7 +746,7 @@ select option{
     display: inline-block;
 
     position: relative;
-    animation: text 2s steps(15) forwards;
+    animation: text 1s steps(15) forwards;
 }
 
 @keyframes text {
@@ -562,4 +781,62 @@ td.bttns a {
 
 td.bttns a:hover{
   background: var(--dark-red);
+}
+
+.clientIn {
+    padding: 6px 5px;
+    margin: 10px 0 10px 0;
+    color: var(--color-primary);
+}
+
+.clientInfo {
+    display: none;
+    width: 100%;
+}
+
+.clientIn input, .clientIn label{
+  cursor: pointer;
+}
+
+.mainDivPopup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: var(--transparent-bg);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    backdrop-filter: var(--backdrop-filter);
+    z-index: 9999;
+    display: none;
+}
+
+.popupContainer {
+    width: 90%;
+    max-width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--transparent-bg);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 70px 50px;
+    border-radius: var(--border-radius);
+}
+
+h2.submitHeading {
+    font-size: 30px;
+    line-height: 70px;
+    text-transform: capitalize;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+h3.submitPragraph {
+    font-size: 22px;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--color-primary);
 }

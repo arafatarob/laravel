@@ -3,7 +3,7 @@ session_start();
   require('../config/db.php');
 
   $select = $conn->query("SELECT users.id, users.name, users.email, users.role, users.password, users.created_at, users.users_activity, role.role_name
-     FROM users INNER JOIN role ON users.role = role.id");
+     FROM users INNER JOIN role ON users.role = role.id ORDER BY id DESC ");
 ?>
 
 <!DOCTYPE html>

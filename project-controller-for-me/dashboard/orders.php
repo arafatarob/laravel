@@ -1,8 +1,9 @@
 <?php
-
+session_start();
   require('../config/db.php');
 
   $select = $conn->query("SELECT * FROM orders ORDER BY id DESC");
+
 
 
 ?>
@@ -62,8 +63,13 @@
             </div>
           </div>
 
-          <div class="form-row d-flex">
-            <div class="inputBox id">
+          <div class="form-row clientIn">
+              <input type="checkbox" name="onClientBox" value="" id="client" class="">
+              <label for="client">Client Information</label>
+          </div>
+
+          <div class="form-row d-flex clientInfo">
+            <div class="inputBox">
               <input type="text" name="clientID" value="" class="form-controll" placeholder="client ID">
             </div>
             <div class="inputBox password">
@@ -72,18 +78,17 @@
           </div>
 
           <div class="form-row">
-            <div class="inputBox id">
+            <div class="inputBox">
               <input type="text" name="platform" value="" class="form-controll" placeholder="plartform name">
             </div>
           </div>
 
           <div class="form-group text-center">
-            <button type="submit" class="bttn" name="button">add order</button>
+            <button type="submit" class="bttn" id="orderBtn" name="button">add order</button>
           </div>
-
         </form>
       </div>
-    <main>
+    <main id="appendPopup">
       <div class="orders">
         <div class="title">
           <div class="">
@@ -95,14 +100,16 @@
         </div>
         <table>
           <tr>
-            <th>contract_ID</th>
-            <th>Contract / Details</th>
-            <th>date</th>
-            <th>client name</th>
-            <th>contract type</th>
+            <th>contract ID</th>
+            <th>Details</th>
+            <th>Completed</th>
+            <th>client</th>
+            <th>type</th>
             <th>amount</th>
-            <th>platform name</th>
-            <th>contract_status</th>
+            <th>platform</th>
+            <th>ID</th>
+            <th>password</th>
+            <th>status</th>
             <?php if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager'){ ?>
                 <th>action's</th>
             <?php } ?>
@@ -118,20 +125,22 @@
             <td><?= $order['type'] ?></td>
             <td>$<?= $order['amount'] ?></td>
             <td><?= $order['platform_name'] ?></td>
+            <td><?= $order['client_id'] ?></td>
+            <td><?= $order['client_password'] ?></td>
             <td><?= $order['status'] ?></td>
             <?php if($_SESSION['user_role'] === 'CEO' || $_SESSION['user_role'] === 'Manager'){ ?>
             <td class="bttns">
               <?php if($_SESSION['user_role'] === 'CEO'){ ?>
                 <div class="delete">
-                  <a href="#">delete</a>
+                  <a href="../action/delete_order.php?id=<?= $order['id'] ?>"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
                 <div class="edit">
-                  <a href="#">edit</a>
+                  <a href="../action/edit_order.php?id=<?= $order['id'] ?>"><i class="fa-solid fa-pen-ruler"></i></a>
                 </div>
               <?php } ?>
               <?php if($_SESSION['user_role'] === 'Manager'){ ?>
                 <div class="edit">
-                  <a href="#">edit</a>
+                  <a href="../action/edit_order.php?id=<?= $order['id'] ?>"><i class="fa-solid fa-pen-ruler"></i></a>
                 </div>
                 <?php } ?>
             </td>

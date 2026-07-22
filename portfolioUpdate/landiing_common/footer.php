@@ -1,5 +1,46 @@
 <!-- ══════════ FOOTER ══════════ -->
+<style media="screen">
+  footer .top_bar {
+  position: fixed;
+  background: var(--cyan);
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  color: var(--bg-dark-blue);
+  box-shadow: var(--box-shadow);
+  border: var(--border);
+  left: 15px;
+  bottom: 15px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+footer .top_bar a i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--bg-dark-blue);
+}
+
+.d-none{
+  display: none !important;
+}
+
+.d-block{
+  display: block !important;
+}
+</style>
+
+
 <footer>
+  <div class="top_bar d-none">
+    <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
+  </div>
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-logo">Arafat.</div>
@@ -14,9 +55,9 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="footer-social">
-      <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a target="_blank" href="https://github.com/arafatarob" class="social-link"><i class="fab fa-github"></i></a>
+      <a target="_blank" href="https://www.linkedin.com/in/mdarafathossainaofficial/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a target="_blank" href="https://x.com/arafat7690" class="social-link"><i class="fab fa-twitter"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -24,6 +65,8 @@
     <div class="footer-made">Built with <span>♥</span> in Bangladesh</div>
   </div>
 </footer>
+
+<?php include __DIR__ . '/../assistant_widget.php'; ?>
 
 <!-- ══════════ PROJECT MODALS ══════════ -->
 
@@ -177,6 +220,86 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+  // Account dropdown toggle
+  function toggleAccountMenu() {
+    const dropdown = document.getElementById('accountDropdown');
+    const chevron  = document.getElementById('accountChevron');
+    if (!dropdown) return;
+    dropdown.classList.toggle('open');
+    chevron.classList.toggle('open');
+  }
+
+  // বাইরে click করলে বন্ধ হবে
+  document.addEventListener('click', function(e) {
+    const widget = document.getElementById('accountWidget');
+    if (widget && !widget.contains(e.target)) {
+      document.getElementById('accountDropdown')?.classList.remove('open');
+      document.getElementById('accountChevron')?.classList.remove('open');
+    }
+  });
+
+  // Mobile nav
+  const hamburger  = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobileNav');
+
+  if (hamburger) {
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  }
+
+  function closeMobileNav() {
+    mobileNav?.classList.remove('active');
+    hamburger?.classList.remove('active');
+  }
+
+
+
+document.addEventListener('DOMContentLoaded', function(){
+  // loading popup
+  const body = document.body;
+  const div = document.createElement('div');
+  div.classList.add('loadingDiv');
+
+  const container = document.createElement('div');
+  container.classList.add('container');
+  container.innerHTML = '<h2>Loading.......</h2>';
+
+  body.appendChild(div);
+  div.appendChild(container);
+
+  const loadingDiv = document.querySelector('.loadingDiv');
+
+    window.addEventListener('load', function(){
+      setTimeout(function () {
+        loadingDiv.style.display = 'none';
+      }, 1500);
+    });
+});
+
+const topBar = document.querySelector(".top_bar");
+
+document.addEventListener('scroll', function(){
+  if(window.scrollY > "150"){
+    topBar.classList.add("d-block");
+    topBar.classList.remove("d-none");
+  }
+  else{
+    topBar.classList.remove("d-block");
+    topBar.classList.add("d-none");
+  }
+});
+
+</script>
+<script src="../assets/dashboard.js"></script>
 
 </body>
 </html>

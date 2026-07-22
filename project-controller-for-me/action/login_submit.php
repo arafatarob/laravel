@@ -18,17 +18,27 @@ session_start();
             $_SESSION['user_id'] = $users['id'];
             $_SESSION['user_name'] = $users['name'];
             $_SESSION['user_role'] = $users['role_name'];
-              echo "<script>alert('logged in)</script>";
+
+            $userId = $users['id'];
+            $updateQuery = "UPDATE users SET users_activity = NOW() WHERE id = ?";
+            $stm = $conn->prepare($updateQuery);
+            $stm->bind_param("i", $userId);
+            $stm->execute();
+            $stm->close();
+
+              echo "<script>alert('logged in')</script>";
               header('Location: ../dashboard/dashboard.php');
               exit();
           }else{
-              echo "<script>alert('incorrect password!')</script>";
-              header('Location: ./auth/login.php');
+              echo "<script>alert('incorrect password!');</script>";
+              header('Location: ../auth/login.php');
+              exit();
           }
         }
           else{
-            echo "<script>alert('logged in Failed!')</script>";
-            header('Location: ./auth/signup.php');
+            echo "<script>alert('logged in Failed!');</script>";
+            header('Location: ../auth/login.php');
+            exit();
         }
 
     }

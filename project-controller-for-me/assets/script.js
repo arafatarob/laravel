@@ -84,6 +84,51 @@ document.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('load', function(){
       setTimeout(function () {
         loadingDiv.style.display = 'none';
-      }, 2500);
+      }, 1500);
     });
+});
+
+
+// form client area on off
+
+const clientInfo = document.querySelector('.clientInfo');
+const client = document.getElementById('client');
+
+client.addEventListener('click', function(){
+  clientInfo.classList.toggle('d-block');
+});
+
+
+// order btn js
+
+document.addEventListener('DOMContentLoaded', function(){
+  const orderBtn = document.getElementById('orderBtn');
+  const appendPopup = document.getElementById('appendPopup');
+
+  const mainDivPopup = document.createElement('div');
+  mainDivPopup.classList.add('mainDivPopup');
+
+  const popupContainer = document.createElement('div');
+  popupContainer.classList.add('popupContainer');
+
+  const h2 = document.createElement('h2');
+  h2.classList.add('submitHeading');
+  h2.innerHTML = 'thanks';
+
+  const h3 = document.createElement('h3');
+  h3.classList.add('submitPragraph');
+  h3.innerHTML = 'order created successfully';
+
+  appendPopup.appendChild(mainDivPopup);
+  mainDivPopup.appendChild(popupContainer);
+  popupContainer.appendChild(h2);
+  popupContainer.appendChild(h3);
+
+  orderBtn.addEventListener('click', function(event){
+    event.preventDefault();
+    mainDivPopup.style.display = "block";
+    setTimeout (function(){
+      document.querySelector('.order_submit').submit();
+    }, 3000);
+  });
 });

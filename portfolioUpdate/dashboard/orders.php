@@ -65,7 +65,7 @@ session_start();
 
           <div class="form-row clientIn">
               <input type="checkbox" name="onClientBox" value="" id="client" class="">
-              <label for="client">Client Information</label>
+              <label for="client">Client Information (If Applicable)</label>
           </div>
 
           <div class="form-row d-flex clientInfo">

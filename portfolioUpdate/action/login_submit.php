@@ -13,7 +13,7 @@ session_start();
 
 
         if ($users) {
-          if($password === $users['password']){
+          if(password_verify($password, $users['password'])){
 
             $_SESSION['user_id'] = $users['id'];
             $_SESSION['user_name'] = $users['name'];
@@ -27,7 +27,7 @@ session_start();
             $stm->close();
 
               echo "<script>alert('logged in')</script>";
-              header('Location: ../dashboard/dashboard.php');
+              header('Location: ../index.php');
               exit();
           }else{
               echo "<script>alert('incorrect password!');</script>";
