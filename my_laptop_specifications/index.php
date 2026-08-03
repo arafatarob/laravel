@@ -25,6 +25,28 @@
   </head>
   <body>
 
+    <header>
+      <div class="marque_container">
+        <marquee>
+          <div class="contact">
+              <span></span>
+              <h3>Develope By MD ARAFAT HOSSAIN</h3>
+              <span></span>
+              <h3>Develope By MD ARAFAT HOSSAIN</h3>
+              <span></span>
+              <h3>Develope By MD ARAFAT HOSSAIN</h3>
+              <span></span>
+              <h3>Develope By MD ARAFAT HOSSAIN</h3>
+              <span></span>
+              <h3>Develope By MD ARAFAT HOSSAIN</h3>
+              <span></span>
+              <h3>Develope By MD ARAFAT HOSSAIN</h3>
+              <span></span>
+          </div>
+      </marquee>
+      </div>
+    </header>
+
     <section class="pdp">
       <div class="wrap pdp-grid">
 
@@ -72,21 +94,13 @@
 
     <div class="rating-row">
       <span class="stars">★★★★★</span>
-      <span class="count">4.8 out of 5 · <a href="#reviews-panel">3 reviews</a></span>
+      <span class="count">4.8 out of 5 - <a href="#reviews-panel">3 reviews</a></span>
     </div>
 
     <div class="price-block">
       <span class="now mono" id="priceNow">৳28,000</span>
       <br>
       <span class="was">৳41,000</span>
-    </div>
-
-
-
-    <div class="btn-wide-row">
-      <a href="#">
-        <button class="btn btn-ghost" id="buyNow">Buy Now</button>
-      </a>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 // Database configuration
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'pos_sql');
+define('DB_NAME', 'pos_db1');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
